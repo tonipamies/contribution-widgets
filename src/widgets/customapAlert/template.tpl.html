@@ -1,0 +1,4 @@
+<div ng-class="ctrl.getClasses()" role="alert">
+    <button ng-if="properties.isDismissible" ng-click="ctrl.dismiss()" type="button" class="close" data-dismiss="alert" aria-label="Close"><span ng-if="properties.showcountdown">[{{sec}}] </span><span aria-hidden="true">&times;</span></button>
+    <i ng-class="ctrl.getIconClass()" style="vertical-align: middle" ng-if="properties.displayIcon"></i> <span ng-bind-html="ctrl.getMessage()"></span>
+</div>

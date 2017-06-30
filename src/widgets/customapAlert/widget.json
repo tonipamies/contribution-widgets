@@ -1,0 +1,113 @@
+{
+	"id": "customapAlert",
+	"name": "apAlert",
+	"template": "@template.tpl.html",
+	"controller": "@controller.ctrl.js",
+	"description": "Nueva bootstrap alert. Permite seleccionar el estilo, decidir si es o no descartable,opciones de autocierre con cuenta atrás, mostrar o no un icono así como su tamaño.",
+	"custom": true,
+	"properties": [{
+		"label": "Mensaje",
+		"name": "message",
+		"caption": "Mensaje a mostrar en la alerta",
+		"help": "Mensaje a mostrar en la alerta. Puede contener tags simples de HTML. \nSi en en texto queremos poner enlaces, podemos usar la class \"alert-link\" para mantener estilo de colores. \n<a href=\"#\" class=\"alert-link\">enlace</a>",
+		"type": "text",
+		"bond": "expression"
+	},
+	{
+		"label": "Estilo de la alerta",
+		"name": "style",
+		"caption": "Estilo de la alerta predefinido en bootstrap",
+		"help": "Estilo de la alerta, utiliza los predefinidos por Bootstrap Alerts: Danger, Info, Warning y Succes",
+		"type": "choice",
+		"defaultValue": "alert-danger",
+		"choiceValues": ["alert-success",
+		"alert-info",
+		"alert-warning",
+		"alert-danger"],
+		"bond": "expression"
+	},
+	{
+		"label": "Es descartable",
+		"name": "isDismissible",
+		"caption": "No hace falta que sea Descartable para que se Auto-Cierre",
+		"help": "En caso de decir que la alerta es descartable, se mostrará un icono de cierre en la parte superior derecha del elemento",
+		"type": "boolean",
+		"defaultValue": true,
+		"bond": "expression"
+	},
+	{
+		"label": "Acción al descartar",
+		"name": "onDismiss",
+		"caption": "Normalmente una función javascript o actualizar una variable",
+		"help": "Si la alerta es descartable, podemos indicar que acciones queremos realizar al descartarla. Normalmente ejecutar una función js o dar valor a una variable",
+		"showFor": "properties.isDismissible.value === true || properties.isAutoDismissible.value === true",
+		"type": "text",
+		"bond": "expression"
+	},
+	{
+		"label": "Auto cierre de la Alerta",
+		"name": "isAutoDismissible",
+		"caption": "Al Auto Cerrarse siempre ejecutará las Acciones definidas en Acciones al Descartar",
+		"help": "Si seleccionamos que se auto cierre la alerta, esta lo hará pasados los milisegundos especificado en la siguiente propiedad. No hace falta que la alerta sea descartable para poderse autocerrar.",
+		"type": "boolean",
+		"defaultValue": true,
+		"bond": "expression"
+	},
+	{
+		"label": "Tiempo de AutoCierre",
+		"name": "timeForAutoClose",
+		"caption": "Tiempo en milisegundos para el cierre automático de la alerta",
+		"help": "Tiempo en milisegundos para el cierre automático de la alerta. Una vez transcurridos, se ejecutarán las acciones definidas en Acciones al Descartar y se eliminará el elemento",
+		"showFor": "properties.isAutoDismissible.value === true",
+		"type": "integer",
+		"defaultValue": 5000,
+		"bond": "expression"
+	},
+	{
+		"label": "Mostrar Icono",
+		"name": "displayIcon",
+		"caption": "Seleccione No si no quiere mostrar Icono",
+		"help": "Seleccione si quiere mostrar Icono o no",
+		"type": "boolean",
+		"defaultValue": true,
+		"bond": "expression"
+	},
+	{
+		"label": "Icon class",
+		"name": "buttonIcon",
+		"caption": "Escriba el nombre del icono sin el prefijo glyphicon ej. ok-sign",
+		"help": "Escriba el nombre del icono a mostrar (ver: http://getbootstrap.com/components/)\nSi no se especifica, por defecto se muestran:\nalert-success:ok-sign\nalert-info:info-sign\nalert-warning:warning-sign\nalert-danger:alert",
+		"showFor": "properties.displayIcon.value === true",
+		"type": "text",
+		"defaultValue": "ok-sign",
+		"bond": "expression"
+	},
+	{
+		"label": "Medida del Icono",
+		"name": "SizeIcon",
+		"caption": "Seleccione la medida del icono a mostrar siendo 1 tamaño normal y 5 tamaño muy grande",
+		"help": "Seleccione la medida del icono a mostrar siendo 1 tamaño normal y 5 tamaño muy grande. El texto de la derecha se alineará centrado vertical",
+		"showFor": "properties.displayIcon.value === true",
+		"type": "choice",
+		"defaultValue": "2",
+		"choiceValues": ["1",
+		"2",
+		"3",
+		"4",
+		"5"],
+		"bond": "constant"
+	},
+	{
+		"label": "Mostrar cuenta atrás",
+		"name": "showcountdown",
+		"caption": "Muestra una cuenta atrás numérica al lado del botón de cerrar",
+		"help": "Muestra una cuenta atrás numérica al lado del botón de cerrar en los casos en los que marcamos que la alerta se AutoCierra",
+		"type": "boolean",
+		"defaultValue": false,
+		"bond": "expression"
+	}],
+	"assets": [{
+		"name": "pbAlert.css",
+		"type": "css"
+	}]
+}
