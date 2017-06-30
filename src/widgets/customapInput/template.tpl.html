@@ -1,0 +1,49 @@
+<div ng-class="{
+    'form-horizontal': properties.labelPosition === 'left' && !properties.labelHidden,
+    'row': properties.labelPosition === 'top' && !properties.labelHidden || properties.labelHidden
+    }">
+    <div class="form-group">
+        <label
+            ng-if="!properties.labelHidden"
+            ng-class="{ 'control-label--required': properties.required }"
+            class="control-label col-xs-{{ !properties.labelHidden && properties.labelPosition === 'left' ? properties.labelWidth : 12 }}"> 
+            {{properties.label | uiTranslate}}
+            <a href="#0"
+                data-toggle="tooltip" 
+                tooltip-placement="{{ properties.tooltipDirection }}"
+                tooltip="{{ properties.tooltipMessage }}"
+                tooltip-class="{{ properties.tooltipClass }}"
+                ng-class="btn"
+                style="{{ tooltipstyle }}"
+                ng-if="properties.displayTooltip"
+            >
+            <i class="glyphicon glyphicon-{{ properties.tooltipIcon }}"></i>
+            </a>
+        </label>
+        <div class="col-xs-{{ 12 - (!properties.labelHidden && properties.labelPosition === 'left' ? properties.labelWidth : 0) }}">
+            <div ng-class="ctrl.getIconClass($form,true)">
+                <i ng-if="properties.showinputicon!='none'" ng-class="ctrl.getIconClass($form,false)" class="glyphicon glyphicon-{{properties.inputicon}}"></i>
+                <i ng-if="$form[ctrl.name].$invalid && properties.showvalidicon" class="alert-danger right-inner-addon glyphicon glyphicon-{{properties.erroricon}}"></i>
+                <i ng-if="!$form[ctrl.name].$invalid && properties.showvalidicon" class="alert-success right-inner-addon glyphicon glyphicon-{{properties.nonerroricon}}"></i>
+                <input
+                    type="{{properties.type}}"
+                    class="form-control"
+                    placeholder="{{ properties.placeholder | uiTranslate }}"
+                    ng-model="properties.value"
+                    ng-pattern = "regex"
+                    name="{{ctrl.name}}"
+                    ng-change="ctrl.change($form)"
+                    ng-required="properties.required"
+                    ng-minlength="properties.minLength"
+                    ng-maxlength="properties.maxLength"
+                    min="{{properties.min}}"
+                    max="{{properties.max}}"
+                    step="{{properties.step}}"
+                    ng-readonly="properties.readOnly">
+            </div>
+            <div ng-messages="$form[ctrl.name].$dirty && $form[ctrl.name].$error " ng-messages-include="forms-generic-errors.html" role="alert">
+                <div class="text-danger" ng-message="pattern">{{ errorMsgPattern[properties.subtype] | uiTranslate }}</div>
+            </div>
+        </div>
+    </div>
+</div>

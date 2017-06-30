@@ -1,0 +1,49 @@
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 45px;    
+}
+i.left-inner-addon {
+    position: absolute;
+    padding: 2px 6px;
+    pointer-events: none;
+	font-size: 2em;
+	background-color: transparent;
+}
+
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 45px;    
+}
+i.right-inner-addon {
+    position: absolute;
+    right: 1px;
+    padding: 2px 6px;
+    pointer-events: none;
+	font-size: 2em;
+	background-color: transparent;
+}
+.left-right-inner-addon{
+    position: relative;
+}
+.left-right-inner-addon input {
+    padding-left: 45px;
+	padding-right: 45px;    
+}
+.right-right-inner-addon{
+    position: relative;
+}
+.right-right-inner-addon input {
+	padding-right: 90px;    
+}
+i.right-right-inner-addon {
+    position: absolute;
+    right: 42px;
+    padding: 2px 6px;
+    pointer-events: none;
+	font-size: 2em;
+	background-color: transparent;
+}

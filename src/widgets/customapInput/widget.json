@@ -1,0 +1,352 @@
+{
+	"id": "customapInput",
+	"name": "apInput",
+	"template": "@template.tpl.html",
+	"controller": "@controller.ctrl.js",
+	"description": "Nuevo widget del tipo Input",
+	"custom": true,
+	"properties": [{
+		"label": "Nombre del widget",
+		"name": "name",
+		"caption": "Nombre que queremos dar al widget. Nos sirve para acceder a él a través de js, angular etc...",
+		"help": "Nombre que queremos dar al widget. Nos sirve para acceder a él a través de js, angular etc...\n\n$form.nombreconfigurado.$setViewValue(\"nuevo valor\");\n$form.nombreconfigurado.$render();\n\nNo se puede duplicar nombres, ya que sinó no podremos acceder al objeto",
+		"type": "text",
+		"defaultValue": "",
+		"bond": "expression"
+	},
+	{
+		"label": "Required",
+		"name": "required",
+		"help": "In the context of a form container, use $form.$invalid as a Boolean to check form validity in a widget property",
+		"type": "boolean",
+		"defaultValue": false,
+		"bond": "expression"
+	},
+	{
+		"label": "Value min length",
+		"name": "minLength",
+		"help": "In the context of a form container, use $form.$invalid as a Boolean to check form validity in a widget property",
+		"type": "integer",
+		"defaultValue": "",
+		"bond": "expression",
+		"constraints": {
+			"min": "0"
+		}
+	},
+	{
+		"label": "Value max length",
+		"name": "maxLength",
+		"help": "In the context of a form container, use $form.$invalid as a Boolean to check form validity in a widget property",
+		"type": "integer",
+		"defaultValue": "",
+		"bond": "expression",
+		"constraints": {
+			"min": "1"
+		}
+	},
+	{
+		"label": "Read-only",
+		"name": "readOnly",
+		"type": "boolean",
+		"defaultValue": false,
+		"bond": "expression"
+	},
+	{
+		"label": "Label hidden",
+		"name": "labelHidden",
+		"type": "boolean",
+		"defaultValue": false,
+		"bond": "constant"
+	},
+	{
+		"label": "Label",
+		"name": "label",
+		"showFor": "properties.labelHidden.value === false",
+		"type": "text",
+		"defaultValue": "Default label",
+		"bond": "interpolation"
+	},
+	{
+		"label": "Label position",
+		"name": "labelPosition",
+		"showFor": "properties.labelHidden.value === false",
+		"type": "choice",
+		"defaultValue": "top",
+		"choiceValues": ["left",
+		"top"],
+		"bond": "constant"
+	},
+	{
+		"label": "Label width",
+		"name": "labelWidth",
+		"showFor": "properties.labelHidden.value === false",
+		"type": "integer",
+		"defaultValue": 4,
+		"bond": "constant",
+		"constraints": {
+			"min": "1",
+			"max": "12"
+		}
+	},
+	{
+		"label": "Placeholder",
+		"name": "placeholder",
+		"help": "Short hint that describes the expected value",
+		"type": "text",
+		"bond": "interpolation"
+	},
+	{
+		"label": "Value",
+		"name": "value",
+		"caption": "Any variable: <i>myData</i> or <i>myData.attribute</i>",
+		"help": "Read-write binding, initialized or updated by users' input (bi-directional bond)",
+		"type": "text",
+		"bond": "variable"
+	},
+	{
+		"label": "Type",
+		"name": "type",
+		"help": "In the context of a form container, use $form.$invalid as a Boolean to check form validity in a widget property",
+		"type": "choice",
+		"defaultValue": "text",
+		"choiceValues": [{
+			"label": "Texto",
+			"value": "text"
+		},
+		{
+			"label": "Numérico",
+			"value": "number"
+		},
+		{
+			"label": "Dirección de Correo electrónico",
+			"value": "email"
+		},
+		{
+			"label": "Contraseña",
+			"value": "password"
+		}],
+		"bond": "constant"
+	},
+	{
+		"label": "Subtipo",
+		"name": "subtype",
+		"caption": "Especifique si quiere una validación para la entrada",
+		"help": "In the context of a form container, use $form.$invalid as a Boolean to check form validity in a widget property",
+		"showFor": "properties.type.value=='text'",
+		"type": "choice",
+		"defaultValue": "none",
+		"choiceValues": [{
+			"label": "Ninguno",
+			"value": "none",
+			"group": ""
+		},
+		{
+			"label": "Dirección IPv4",
+			"value": "ipv4",
+			"group": "Redes"
+		},
+		{
+			"label": "Dirección IPv4 Privada",
+			"value": "ipv4priv",
+			"group": "Redes"
+		},
+		{
+			"label": "Máscara IPv4",
+			"value": "maskipv4",
+			"group": "Redes"
+		},
+		{
+			"label": "Dirección MAC 48 bits",
+			"value": "mac48",
+			"group": "Redes"
+		},
+		{
+			"label": "Hostname",
+			"value": "hostname",
+			"group": "Redes"
+		},
+		{
+			"label": "Dirección de Correo electrónico",
+			"value": "email",
+			"group": "Genéricas"
+		},
+		{
+			"label": "Expresión Regular",
+			"value": "expreg",
+			"group": "Genéricas"
+		}],
+		"bond": "constant"
+	},
+	{
+		"label": "Expresión Regular",
+		"name": "expreg",
+		"caption": "Entre la expresión regular para esta validación",
+		"help": "Entre la expresión regular para esta validación",
+		"showFor": "properties.subtype.value === 'expreg'",
+		"type": "text",
+		"defaultValue": "^()$",
+		"bond": "expression"
+	},
+	{
+		"label": "Min value",
+		"name": "min",
+		"help": "In the context of a form container, use $form.$invalid as a Boolean to check form validity in a widget property",
+		"showFor": "properties.type.value === 'number'",
+		"type": "integer",
+		"bond": "expression"
+	},
+	{
+		"label": "Max value",
+		"name": "max",
+		"help": "In the context of a form container, use $form.$invalid as a Boolean to check form validity in a widget property",
+		"showFor": "properties.type.value === 'number'",
+		"type": "integer",
+		"bond": "expression"
+	},
+	{
+		"label": "Step",
+		"name": "step",
+		"help": "Specifies the legal number intervals between values",
+		"showFor": "properties.type.value === 'number'",
+		"type": "integer",
+		"defaultValue": 1,
+		"bond": "expression"
+	},
+	{
+		"label": "Muestra tooltip",
+		"name": "displayTooltip",
+		"caption": "Selecciona que si para mostrar un icono a la derecha de la etiqueta del witget.",
+		"help": "Selecciona que si para mostrar un icono a la derecha de la etiqueta del witget. Pulsando encima del icono se nos muestra el mensaje del tooltip",
+		"type": "boolean",
+		"defaultValue": true,
+		"bond": "constant"
+	},
+	{
+		"label": "Mensaje tooltip",
+		"name": "tooltipMessage",
+		"caption": "Mensaje a mostrar en la ayuda contextual",
+		"help": "Mensaje a mostrar en la ayuda contextual cuando se punsa encima del icono de tooltip",
+		"showFor": "properties.displayTooltip.value",
+		"type": "text",
+		"defaultValue": "Mi ayuda contextual",
+		"bond": "interpolation"
+	},
+	{
+		"label": "Posición del Tooltip",
+		"name": "tooltipDirection",
+		"caption": "Posición en la que se mostrará el globo de la ayuda contextual.",
+		"help": "Posición en la que se mostrará el globo de la ayuda contextual. Recomendable seleccionar Izquierda en los campos que estén cerca del margen derecho y derecha cuando estén cerca del izquierdo",
+		"showFor": "properties.displayTooltip.value",
+		"type": "choice",
+		"defaultValue": "left",
+		"choiceValues": ["top",
+		"left",
+		"right",
+		"bottom"],
+		"bond": "constant"
+	},
+	{
+		"label": "Icono Tooltip",
+		"name": "tooltipIcon",
+		"caption": "Escriba el nombre del icono sin el prefijo glyphicon ej. question-sign",
+		"help": "Escriba el nombre del icono a mostrar (ver: http://getbootstrap.com/components/)",
+		"showFor": "properties.displayTooltip.value",
+		"type": "text",
+		"defaultValue": "info-sign",
+		"bond": "interpolation"
+	},
+	{
+		"label": "Estilo del Tooltip",
+		"name": "tooltipstyle",
+		"caption": "Estilo del icono. Ejemplos:  (float:left ó float:initial ó float:right)",
+		"help": "Estilo del icono, nos puede servir para ubicar el icono en una posición u otra por ejemplo. (float:left ó float:initial ó float:right)\nPuede contener todos los atributos que creamos necesarios separados por ;\nEjemplo: float:initial;text-decoration-none;",
+		"showFor": "properties.displayTooltip.value",
+		"type": "text",
+		"defaultValue": "float:initial; text-decoration: none;",
+		"bond": "interpolation"
+	},
+	{
+		"label": "Tooltip CSS class",
+		"name": "tooltipClass",
+		"caption": "Nombre de la clase CSS a aplicar en el globo de la ayuda contextual",
+		"help": "Nombre de la clase CSS a aplicar en el globo de la ayuda contextual",
+		"showFor": "properties.displayTooltip.value",
+		"type": "text",
+		"bond": "interpolation"
+	},
+	{
+		"label": "onChange",
+		"name": "onChange",
+		"caption": "Nombre de la función javascript a ejecutar cuando se produzca un evento onchange",
+		"help": "Nombre de la función javascript a ejecutar cuando se produzca un evento onchange en el widget. Sólo tenemos que indicar el nombre de la función, sin () ni parámetros.\nSiempre recibe por defecto los parámetros window y form. Éste último hace referencia al formulario donde se encuentra el widget en cuestión.\nEjemplo de función:\nfunction seteavalores( window, form ){\n   form.pbInput2.$setViewValue(\"Funciona correctamente\");\n   form.pbInput2.$render();\n   form.pbInput3.$setViewValue(\"Funciona correctamente\");\n   form.pbInput3.$render();\n   // Campo de otro formulario\n   var a = angular.element( window.document.$form[1].pbInput3).scope();\n   a.properties.value=\"También funciona\";\n   a.$apply();\n}",
+		"type": "text",
+		"bond": "expression"
+	},
+	{
+		"label": "Mostrar icono validación",
+		"name": "showvalidicon",
+		"caption": "Muestra un icono de validación alert o success en la parte derecha del campo input",
+		"help": "Muestra un icono de alert o success en la parte derecha del campo input en función de si la entrada cumple o no las reglas de validación",
+		"type": "boolean",
+		"defaultValue": true,
+		"bond": "constant"
+	},
+	{
+		"label": "Icono entrada correcta",
+		"name": "nonerroricon",
+		"caption": "Escriba el nombre del icono sin el prefijo glyphicon ej. question-sign",
+		"help": "Escriba el nombre del icono a mostrar (ver: http://getbootstrap.com/components/)",
+		"showFor": "properties.showvalidicon.value",
+		"type": "text",
+		"defaultValue": "ok",
+		"bond": "interpolation"
+	},
+	{
+		"label": "Icono entrada incorrecta",
+		"name": "erroricon",
+		"caption": "Escriba el nombre del icono sin el prefijo glyphicon ej. question-sign",
+		"help": "Escriba el nombre del icono a mostrar (ver: http://getbootstrap.com/components/)",
+		"showFor": "properties.showvalidicon.value",
+		"type": "text",
+		"defaultValue": "warning-sign",
+		"bond": "interpolation"
+	},
+	{
+		"label": "Mostrar icono Input",
+		"name": "showinputicon",
+		"caption": "Muestra un icono dentro del campo input",
+		"help": "Muestra un icono dentro del campo input",
+		"type": "choice",
+		"defaultValue": "none",
+		"choiceValues": [{
+			"value": "none",
+			"label": "No Mostrar"
+		},
+		{
+			"value": "left",
+			"label": "En la Izquierda"
+		},
+		{
+			"value": "right",
+			"label": "En la derecha"
+		}],
+		"bond": "constant"
+	},
+	{
+		"label": "Icono Input",
+		"name": "inputicon",
+		"caption": "Escriba el nombre del icono sin el prefijo glyphicon ej. question-sign",
+		"help": "Escriba el nombre del icono a mostrar (ver: http://getbootstrap.com/components/)",
+		"showFor": "['left', 'right'].indexOf(properties.showinputicon.value) > -1",
+		"type": "text",
+		"defaultValue": "user",
+		"bond": "interpolation"
+	}],
+	"assets": [{
+		"id": "2928f8cd-be31-4e3a-ab7b-e9ef733f42eb",
+		"name": "input-icon.css",
+		"type": "css",
+		"order": 1,
+		"external": false
+	}]
+}
