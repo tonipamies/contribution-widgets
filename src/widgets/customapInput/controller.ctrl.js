@@ -3,19 +3,19 @@ function ($scope, $log, $window, widgetNameFactory ) {
   'use strict';
   $scope.msgTel = null;
   $scope.regex = null;
-  $scope.errorMsgPattern = { ipv4:'Formato de direcci髇 IP incorrecta',
-                             ipv4priv:'Direcci髇 IP Privada incorrecta',
+  $scope.errorMsgPattern = { ipv4:'Formato de direcci贸n IP incorrecta',
+                             ipv4priv:'Direcci贸n IP Privada incorrecta',
                              mac48:'Formato de MAC incorrecto',
-                             maskipv4:'Formato de m醩cara incorrecta',
-                             email:'Direcci髇 de correo electr髇ica incorrecta',
-                             expreg:'Error en la validaci髇 del campo (expreg)',
-                             hostname:'Nombre de m醧uina incorrecto'
+                             maskipv4:'Formato de m谩scara incorrecta',
+                             email:'Direcci贸n de correo electr贸nica incorrecta',
+                             expreg:'Error en la validaci贸n del campo (expreg)',
+                             hostname:'Nombre de m谩quina incorrecto'
   };
   
   if ($scope.properties.name !== null){
       this.name = $scope.properties.name;
   } else {
-      this.name = widgetNameFactory.getName('vozteInput');
+      this.name = widgetNameFactory.getName('apInput');
   }
   
   this.tooltipstyle = "float:right; text-decoration: none;";
