@@ -12,7 +12,7 @@ function ($scope, $log, $window, widgetNameFactory ) {
                              hostname:'Nombre de máquina incorrecto'
   };
   
-  if ($scope.properties.name !== null){
+  if ($scope.properties.name !== null && $scope.properties.name !== ""){
       this.name = $scope.properties.name;
   } else {
       this.name = widgetNameFactory.getName('apInput');
