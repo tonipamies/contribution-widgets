@@ -103,6 +103,7 @@
 		"caption": "Muestra una cuenta atrás numérica al lado del botón de cerrar",
 		"help": "Muestra una cuenta atrás numérica al lado del botón de cerrar en los casos en los que marcamos que la alerta se AutoCierra",
 		"type": "boolean",
+		"showFor": "properties.isAutoDismissible.value === true",
 		"defaultValue": false,
 		"bond": "expression"
 	}],

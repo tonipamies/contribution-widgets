@@ -23,7 +23,7 @@ describe('apAlertWidget', function () {
   }));
 
   it('should contains specified html', function () {
-    scope.properties.value = 'Hello';
+    scope.properties.message = 'Error no encontramos';
 
     var element = $compile('<custom-apAlert></custom-apAlert>')(scope);
     scope.$apply();

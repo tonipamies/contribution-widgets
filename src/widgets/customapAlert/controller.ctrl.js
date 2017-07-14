@@ -1,4 +1,4 @@
-function WidgetapAlertController($scope, $sce, $timeout, $interval, $element ) {
+function WidgetapAlertController($scope, $sce, $timeout, $interval, $element, $window ) {
     
     $scope.sec = $scope.properties.timeForAutoClose/1000;
     $scope.Timer = null;
@@ -14,7 +14,7 @@ function WidgetapAlertController($scope, $sce, $timeout, $interval, $element ) {
             $scope.sec-=1;
     }}, 1000 );
     
-    this.StopTimer = function(){
+    $scope.StopTimer = function(){
         $scope.sec = $scope.properties.timeForAutoClose/1000;
         if (angular.isDefined($scope.Timer)) {
             $interval.cancel($scope.Timer);
@@ -28,9 +28,7 @@ function WidgetapAlertController($scope, $sce, $timeout, $interval, $element ) {
     
     $scope.Timeout = $timeout(function () {
         if ($scope.properties.isAutoDismissible){
-           $scope.properties.onDismiss;
-           this.StopTimer();
-           $element.remove();
+           $scope.dismiss();
         }
     }, $scope.properties.timeForAutoClose );
     
@@ -62,7 +60,7 @@ function WidgetapAlertController($scope, $sce, $timeout, $interval, $element ) {
             iconclass += ' gi-' + $scope.properties.SizeIcon + 'x';
         }
         return iconclass;
-    }
+    };
     
     this.getClasses = function () {
         var classes = 'alert '+ $scope.properties.style;
@@ -71,8 +69,11 @@ function WidgetapAlertController($scope, $sce, $timeout, $interval, $element ) {
         return classes;
     };
     
-    this.dismiss = function() {
-        this.StopTimer();
-        $scope.properties.onDismiss;
+    $scope.dismiss = function() {
+        $scope.StopTimer();
+        $element.remove();
+        if (typeof $window[$scope.properties.onDismiss] == "function"){
+          $window[$scope.properties.onDismiss]($window,$form,$scope);
+        } else $scope.properties.onDismiss;
     };
 }

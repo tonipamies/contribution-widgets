@@ -10,7 +10,8 @@ Use it for show an alert message on your pages.
 
 **isDismissible**: select true if the alert is dismissible or false if not.
 
-**onDismiss**: if the alert is dismissible, the accion to execute when dismiss it.
+**onDismiss**: if the alert is dismissible, the accion to execute when dismiss it. If it is a javascript 
+               function name, it will receive three parameters $window, $form and $scope.
 
 **isAutoDismissible**: select true for auto-close the alert.
 
