@@ -3,13 +3,13 @@ function ($scope, $log, $window, widgetNameFactory ) {
   'use strict';
   $scope.msgTel = null;
   $scope.regex = null;
-  $scope.errorMsgPattern = { ipv4:'Formato de dirección IP incorrecta',
-                             ipv4priv:'Dirección IP Privada incorrecta',
+  $scope.errorMsgPattern = { ipv4:'Formato de direccion IP incorrecta',
+                             ipv4priv:'Direccion IP Privada incorrecta',
                              mac48:'Formato de MAC incorrecto',
-                             maskipv4:'Formato de máscara incorrecta',
-                             email:'Dirección de correo electrónica incorrecta',
-                             expreg:'Error en la validación del campo (expreg)',
-                             hostname:'Nombre de máquina incorrecto'
+                             maskipv4:'Formato de mascara incorrecta',
+                             email:'Direccion de correo electronica incorrecta',
+                             expreg:'Error en la validacion del campo (expreg)',
+                             hostname:'Nombre de maquina incorrecto'
   };
   
   if ($scope.properties.name !== null && $scope.properties.name !== ""){
@@ -38,7 +38,7 @@ function ($scope, $log, $window, widgetNameFactory ) {
                     break;
         case 'email':$scope.regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                     break;
-        case 'hostname':$scope.regex = /^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/
+        case 'hostname':$scope.regex = /^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/;
                     break;
         default: $scope.regex = new RegExp($scope.properties.expreg);
                  break; 
