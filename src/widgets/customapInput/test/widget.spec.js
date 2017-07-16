@@ -23,8 +23,7 @@ describe('apInputWidget', function () {
   }));
 
   it('should contains specified html', function () {
-    scope.properties.value = 'Hello';
-
+    scope.properties.value = "test";
     var element = $compile('<custom-apInput></custom-apInput>')(scope);
     scope.$apply();
   });

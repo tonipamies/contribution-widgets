@@ -342,11 +342,16 @@
 		"defaultValue": "user",
 		"bond": "interpolation"
 	}],
-	"assets": [{
+	"assets": [
+	  {
 		"id": "2928f8cd-be31-4e3a-ab7b-e9ef733f42eb",
 		"name": "input-icon.css",
 		"type": "css",
 		"order": 1,
 		"external": false
-	}]
+	  }
+	],
+	"requiredModules": [
+	  "ui.bootstrap"
+	]
 }

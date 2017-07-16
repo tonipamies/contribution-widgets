@@ -24,7 +24,8 @@ function runKarma(opt, widget) {
   opt.files = [
     'node_modules/angular/angular.js',
     'node_modules/angular-mocks/angular-mocks.js',
-    'src/test/runtime.mock.js'
+    'src/test/runtime.mock.js',
+	'node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js'
   ]
     .concat(getJsAssets(widget))
     .concat([

@@ -37,5 +37,9 @@
     "deploy": "gulp deploy",
     "test": "gulp test",
     "deployAll": "gulp deployAll"
+  },
+  "dependencies": {
+    "angular-ui-bootstrap": "^2.5.0",
+    "bootstrap": "^3.3.7"
   }
 }
